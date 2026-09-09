@@ -63,7 +63,7 @@ app.delete('/tasks/:id', (req, res) => {
   res.status(204).send();
 });
 
-// Patch /tasks/:id/completed - Mise à jour des tâches
+// Patch /tasks/:id/completed - PATCH des tâches
 app.patch('/tasks/:id/completed', (req, res) => {
     const id = parseInt(req.params.id);
     const task = tasks.find (t => t.id === id);
