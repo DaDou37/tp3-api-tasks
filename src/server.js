@@ -63,6 +63,24 @@ app.delete('/tasks/:id', (req, res) => {
   res.status(204).send();
 });
 
+// Patach /tasks/:id/completed - Mise à jour des tâches
+app.patch('/tasks/:id/completed', (req, res) => {
+    const id = parseInt(req.params.id);
+    const task = tasks.find (t => t.id === id);
+
+    if (!task) {
+      return res.status(404).json({ error: 'Tâche non trouvée'});
+    }
+
+    if (req.body && req.body.completed !== undefined) {
+      task.completed = req.body.completed;
+    } else {
+      task.completed = !task.completed;
+    }
+
+    res.json(task);
+});
+
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
