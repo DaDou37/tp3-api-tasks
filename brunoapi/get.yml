@@ -1,16 +1,17 @@
 info:
   name: get
   type: http
+  seq: 1
 
 http:
   method: GET
-  url: http://localhost:3000/tasks/
+  url: http://localhost:3000/tasks?status=incompleted
   headers:
     - name: "5"
       value: afficher tache
   params:
-    - name: ""
-      value: ""
+    - name: status
+      value: incompleted
       type: query
   body:
     type: json
